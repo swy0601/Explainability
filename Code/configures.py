@@ -7,8 +7,8 @@ from typing import List
 class DataParser(Tap):
     dataset_dir: str = '../explanation/input.pkl'
     dataset_name = 'code_readability_new'
-    num_node_features: int = 794
-    num_classes: int = 3
+    num_node_features: int = 794 # two-class classification 840 & three-class classification 740
+    num_classes: int = 3 # 2
     avg_num_nodes: int = 150
     data_split_ratio: List = [0.6, 0.2, 0.2]  # the ratio of training, validation and testing set for random split
     batch_size: int = 15
