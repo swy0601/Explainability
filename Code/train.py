@@ -1,5 +1,5 @@
 from configures import data_args, train_args, model_args
-from Code.load_dataset import get_dataloader, balance_dataset, InputDataset, get_cross_dataloader
+from load_dataset import get_dataloader, balance_dataset, InputDataset, get_cross_dataloader
 from DMon import DMon
 import numpy as np
 import torch.nn as nn
@@ -120,7 +120,7 @@ def test(valid_dataloader, gnnNets, criterion):
 
         F1 = f1_score(list(label_all), list(prob_all), average='macro')
         # AUC
-        labels = [0, 1, 2]
+        labels = [0, 1]
         label_all_for_auc = label_binarize(label_all, classes=labels)
         prob_all_for_auc = label_binarize(prob_all, classes=labels)
         AUC = roc_auc_score(label_all_for_auc, prob_all_for_auc, average='macro')
