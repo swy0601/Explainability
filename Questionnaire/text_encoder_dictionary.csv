@@ -1,0 +1,117 @@
+0,1,2
+Q1,What is your identity?,Single Choice Question
+,Choices:,
+,1,Student
+,2,Software Developer
+Q2,What is your gender:,Single Choice Question
+,Choices:,
+,1,Male
+,2,Female
+Q3,What's your age?,Single Choice Question
+,Choices:,
+,1,Under 18 years old
+,2,18 to 24 years old
+,3,25 to 30 years old
+,4,31 to 40 years old
+,5,41 to 50 years old
+,6,51 to 60 years old
+,7,Age 61 and older
+Q4,How many years of programming experience do you have?,Single Choice Question
+,Choices:,
+,1,Within 1 year
+,2,1~3 years (inclusive)
+,3,3~5 years (inclusive)
+,4,5~10 years (inclusive)
+,5,More than 10 years
+Q5,Q1.1 This code snippet has been classified as unreadable by the model. Do you believe the key edges in the code diagram are the core factors influencing this prediction result?,Single Choice Question
+,Choices:,
+,1,Strongly Agree
+,2,Agree
+,3,Uncertain
+,4,Disagree
+,5,Strongly Disagree
+Q6,Q1.2 Do you find that our analysis framework¡¯s readability analysis of the above code is clear and understandable?,Single Choice Question
+,Choices:,
+,1,Strongly Agree
+,2,Agree
+,3,Uncertain
+,4,Disagree
+,5,Strongly Disagree
+Q7,Q2.1 This code snippet has been classified as unreadable by the model. Do you believe the key edges in the code diagram are the core factors influencing this prediction result?,Single Choice Question
+,Choices:,
+,1,Strongly Agree
+,2,Agree
+,3,Uncertain
+,4,Disagree
+,5,Strongly Disagree
+Q8,Q2.2 Do you find that our analysis framework¡¯s readability analysis of the above code is clear and understandable?,Single Choice Question
+,Choices:,
+,1,Strongly Agree
+,2,Agree
+,3,Uncertain
+,4,Disagree
+,5,Strongly Disagree
+Q9,Q3.1 This code snippet has been classified as unreadable by the model. Do you believe the key edges in the code diagram are the core factors influencing this prediction result?,Single Choice Question
+,Choices:,
+,1,Strongly Agree
+,2,Agree
+,3,Uncertain
+,4,Disagree
+,5,Strongly Disagree
+Q10,Q3.2 Do you find that our analysis framework¡¯s readability analysis of the above code is clear and understandable?,Single Choice Question
+,Choices:,
+,1,Strongly Agree
+,2,Agree
+,3,Uncertain
+,4,Disagree
+,5,Strongly Disagree
+Q11,Q4.1 This code snippet has been classified as readable by the model. Do you believe the key edges in the code diagram are the core factors influencing this prediction result?,Single Choice Question
+,Choices:,
+,1,Strongly Agree
+,2,Agree
+,3,Uncertain
+,4,Disagree
+,5,Strongly Disagree
+Q12,Q4.2 Do you find that our analysis framework¡¯s readability analysis of the above code is clear and understandable?,Single Choice Question
+,Choices:,
+,1,Strongly Agree
+,2,Agree
+,3,Uncertain
+,4,Disagree
+,5,Strongly Disagree
+Q13,Q5.1 This code snippet has been classified as readable by the model. Do you believe the key edges in the code diagram are the core factors influencing this prediction result?,Single Choice Question
+,Choices:,
+,1,Strongly Agree
+,2,Agree
+,3,Uncertain
+,4,Disagree
+,5,Strongly Disagree
+Q14,Q5.2 Do you find that our analysis framework¡¯s readability analysis of the above code is clear and understandable?,Single Choice Question
+,Choices:,
+,1,Strongly Agree
+,2,Agree
+,3,Uncertain
+,4,Disagree
+,5,Strongly Disagree
+Q15,Q6.1 This code snippet has been classified as readable by the model. Do you believe the key edges in the code diagram are the core factors influencing this prediction result?,Single Choice Question
+,Choices:,
+,1,Strongly Agree
+,2,Agree
+,3,Uncertain
+,4,Disagree
+,5,Strongly Disagree
+Q16,Q6.2 Do you find that our analysis framework¡¯s readability analysis of the above code is clear and understandable?,Single Choice Question
+,Choices:,
+,1,Strongly Agree
+,2,Agree
+,3,Uncertain
+,4,Disagree
+,5,Strongly Disagree
+Q17,"Q1 Based on your experience, would you be willing to use our analysis framework to assess code readability in your development work?",Single Choice Question
+,Choices:,
+,1,Strongly Agree
+,2,Agree
+,3,Uncertain
+,4,Disagree
+,5,Strongly Disagree
+Q18,"Q2 Based on your experience, do you have any further suggestions for our analysis framework?",Gap Filling Question
