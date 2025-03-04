@@ -49,7 +49,7 @@ Explainability
 ### Code Folder
 In `Code` folder:
 - `code_dataset.py` file achieves pipeline of constructing AST-based program graphs.
-- `Code/checkpoint/code_readability_new` folder stores the trained GCN classification model.
+- `Code/checkpoint/code_readability_new` folder stores the best gcn model parameters after five fold training. These model files can be applied by Pytorch library through using `model.load_state_dict(torch.load(model_path))`.
 ### Dataset Folder
 In `Dataset` folder:
 - `Dataset/Neutral` folder stores the code snippets that are labeled as neutral.
@@ -59,20 +59,21 @@ In `Dataset` folder:
 In `explanation` folder:
 - `explanation/explainer` folder stores the implementation of SubgraphX.
 - `explanation/explaining_subgraphx.py` file achieves the entire pipeline of graph construction, GNN-based model training and GNN interpretation with SubgraphX.
-- `explanation/input.pkl` file stores the input data for the GNN-based model. (#TODO Need to be checked)
+- `explanation/input.pkl` file stores the input data for the GNN-based model. This file can be applied by Pytorch library through using `pkl_file = pd.read_pickle(pkl_path)`.
 ### newResults Folder
 In `newResults` folder, all the visualized interpretation results (png files) are stored：
 - `newResults/readable` folder stores the visualized interpretation results of code snippets that are judged as readable.
     - `newResults/readable/Scalabrino{i}.png` file shows the visualized interpretation result of the code snippet.
-    - `newResults/readable/Scalabrino{i}.java.pt` file stores the intermediate results of the interpretation process. (#TODO Need to be checked)
+    - `newResults/readable/Scalabrino{i}.java.pt` file stores the intermediate results of the interpretation process.
 - `newResults/unreadable` folder stores the visualized interpretation results of code snippets that are judged as unreadable.
 ### Questionnaire Folder
 In `Questionnaire` folder:
 - `Questionnaire/data_analysis.ipynb` file achieves the data analysis process of the questionnaire.
 - `Questionnaire/questionnaire.pdf` file shows the content of the questionnaire.
+- `Questionnaire/questionnaire_modified.pdf` file is a revised questionnaire in accordance with the requirements of gender inclusion and survey rigor.
 - `Questionnaire/questionnaire_results.xlsx` file stores the raw data of the questionnaire.
 ### result Folder
-In `result` folder, (#TODO)
+In `result` folder, all predictions of the gcn classifier on the dataset are stored here.
 
 ## Setup
 ```bash
