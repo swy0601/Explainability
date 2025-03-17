@@ -75,6 +75,7 @@ In `Questionnaire` folder:
 ### result Folder
 In `result` folder, all predictions of the gcn classifier on the dataset are stored here.
 
+
 ## Setup
 ```bash
     conda create -n CodeReadability python=3.9
@@ -90,4 +91,33 @@ Then, you can run the following script to start the entire pipeline of graph con
 ```bash
     cd explanation
     python explaining_subgraphx.py
+```
+
+## Explanation of Files with Uncommon Extensions
+In this repository, several files with uncommon extensions are used. Below is a detailed explanation of their purposes and the methods to load them:
+### `.pt` & `.pth` Files
+Files with the `.pt` & `.pth` extension store the trained model parameters. These are generated during the training process of the GNN-based model and are essential for making predictions or further fine-tuning.
+
+To load a `.pt` & `.pth` file, you can use the PyTorch library as follows:
+```python
+import torch
+model = torch.load("model.pt") # model = torch.load("model.pth")
+```
+
+### `.ipynb` Files
+Files with the `.ipynb` extension are Jupyter Notebook files. These are used for interactive data analysis, visualization, and documentation purposes. For example, `Questionnaire/data_analysis.ipynb` contains the data analysis process for the questionnaire results.
+
+To open and run a .ipynb file, you need to install Jupyter Notebook or JupyterLab. Use the following commands to start Jupyter Notebook:
+```bash
+    jupyter notebook
+```
+Then, navigate to the directory containing the `.ipynb` file and open it in the browser.
+
+### `.pkl` Files
+Files with the `.pkl` extension are used to store serialized Python objects. In this project, `explanation/input.pkl` contains the input data for the GNN-based model. These files are useful for saving and loading complex data structures such as dictionaries, lists, or custom objects.
+
+To load a `.pkl` file, you can use the Pandas library as follows:
+```python
+import pandas as pd
+data = pd.read_pickle("input.pkl")
 ```
