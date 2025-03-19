@@ -75,10 +75,12 @@ def read_sentigraph_data(folder: str, prefix: str):
 
 def read_syn_data(folder: str, prefix):
     with open(os.path.join(folder, f"{prefix}.pkl"), 'rb') as f:
-        adj, features, y_train, y_val, y_test, train_mask, val_mask, test_mask, edge_label_matrix = pickle.load(f)
+        adj, features, y_train, y_val, y_test, train_mask, val_mask, test_mask, edge_label_matrix = pickle.load(
+            f)
 
     x = torch.from_numpy(features).float()
-    y = train_mask.reshape(-1, 1) * y_train + val_mask.reshape(-1, 1) * y_val + test_mask.reshape(-1, 1) * y_test
+    y = train_mask.reshape(-1, 1) * y_train + val_mask.reshape(-1,
+                                                               1) * y_val + test_mask.reshape(-1, 1) * y_test
     y = torch.from_numpy(np.where(y)[1])
     edge_index = dense_to_sparse(torch.from_numpy(adj))[0]
     data = Data(x=x, y=y, edge_index=edge_index)
@@ -95,7 +97,8 @@ def read_ba2motif_data(folder: str, prefix):
     data_list = []
     for graph_idx in range(dense_edges.shape[0]):
         data_list.append(Data(x=torch.from_numpy(node_features[graph_idx]).float(),
-                              edge_index=dense_to_sparse(torch.from_numpy(dense_edges[graph_idx]))[0],
+                              edge_index=dense_to_sparse(
+                                  torch.from_numpy(dense_edges[graph_idx]))[0],
                               y=torch.from_numpy(np.where(graph_labels[graph_idx])[0])))
     return data_list
 
@@ -110,7 +113,8 @@ def get_dataset(dataset_dir, dataset_name, task=None):
     }
     sentigraph_names = ['Graph_SST2', 'Graph_Twitter', 'Graph_SST5']
     sentigraph_names = [name.lower() for name in sentigraph_names]
-    molecule_net_dataset_names = [name.lower() for name in MoleculeNet.names.keys()]
+    molecule_net_dataset_names = [name.lower()
+                                  for name in MoleculeNet.names.keys()]
 
     if dataset_name.lower() == 'MUTAG'.lower():
         return load_MUTAG(dataset_dir, 'MUTAG')
@@ -179,14 +183,16 @@ class MUTAGDataset(InMemoryDataset):
         for i in range(1, 189):
             idx = np.where(graph_indicator == i)
             graph_len = len(idx[0])
-            adj = adj_all[idx[0][0]:idx[0][0] + graph_len, idx[0][0]:idx[0][0] + graph_len]
+            adj = adj_all[idx[0][0]:idx[0][0] + graph_len,
+                          idx[0][0]:idx[0][0] + graph_len]
             label = int(graph_labels[i - 1] == 1)
             feature = nodes_all[idx[0][0]:idx[0][0] + graph_len]
             nb_clss = 7
             targets = np.array(feature).reshape(-1)
             one_hot_feature = np.eye(nb_clss)[targets]
             data_example = Data(x=torch.from_numpy(one_hot_feature).float(),
-                                edge_index=dense_to_sparse(torch.from_numpy(adj))[0],
+                                edge_index=dense_to_sparse(
+                                    torch.from_numpy(adj))[0],
                                 y=label)
             data_list.append(data_example)
 
@@ -197,7 +203,8 @@ class SentiGraphDataset(InMemoryDataset):
     def __init__(self, root, name, transform=None, pre_transform=undirected_graph):
         self.name = name
         super(SentiGraphDataset, self).__init__(root, transform, pre_transform)
-        self.data, self.slices, self.supplement = torch.load(self.processed_paths[0])
+        self.data, self.slices, self.supplement = torch.load(
+            self.processed_paths[0])
 
     @property
     def raw_dir(self):
@@ -230,7 +237,8 @@ class SentiGraphDataset(InMemoryDataset):
             data_list = [self.get(idx) for idx in range(len(self))]
             data_list = [self.pre_transform(data) for data in data_list]
             self.data, self.slices = self.collate(data_list)
-        torch.save((self.data, self.slices, self.supplement), self.processed_paths[0])
+        torch.save((self.data, self.slices, self.supplement),
+                   self.processed_paths[0])
 
 
 class SynGraphDataset(InMemoryDataset):
@@ -313,15 +321,18 @@ def load_syn_data(dataset_dir, dataset_name):
         dataset = BA2MotifDataset(root=dataset_dir, name=dataset_name)
     else:
         dataset = SynGraphDataset(root=dataset_dir, name=dataset_name)
-    dataset.node_type_dict = {k: v for k, v in enumerate(range(dataset.num_classes))}
+    dataset.node_type_dict = {k: v for k,
+                              v in enumerate(range(dataset.num_classes))}
     dataset.node_color = None
     return dataset
 
 
 def load_MolecueNet(dataset_dir, dataset_name, task=None):
     """ Attention the multi-task problems not solved yet """
-    molecule_net_dataset_names = {name.lower(): name for name in MoleculeNet.names.keys()}
-    dataset = MoleculeNet(root=dataset_dir, name=molecule_net_dataset_names[dataset_name.lower()])
+    molecule_net_dataset_names = {
+        name.lower(): name for name in MoleculeNet.names.keys()}
+    dataset = MoleculeNet(
+        root=dataset_dir, name=molecule_net_dataset_names[dataset_name.lower()])
     dataset.data.x = dataset.data.x.float()
     if task is None:
         dataset.data.y = dataset.data.y.squeeze().long()
@@ -368,7 +379,8 @@ def get_dataloader(dataset, batch_size, random_split_flag=True, data_split_ratio
                                          generator=torch.Generator().manual_seed(seed))
 
     dataloader = dict()
-    dataloader['train'] = DataLoader(train, batch_size=batch_size, shuffle=True)
+    dataloader['train'] = DataLoader(
+        train, batch_size=batch_size, shuffle=True)
     dataloader['eval'] = DataLoader(eval, batch_size=batch_size, shuffle=False)
     dataloader['test'] = DataLoader(test, batch_size=batch_size, shuffle=False)
     return dataloader
