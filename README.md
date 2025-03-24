@@ -9,12 +9,12 @@ maintainability, reusability, and portability. In recent years, many deep learni
 classification methods have been proposed. Among them, a Graph Neural Network (GNN)-based model has
 achieved the best performance in the field of code readability classification. However, it is still unclear what
 aspects of the model’s input lead to its decisions, which hinders its practical use in the software industry.
-**Objective:** To improve the transparency of code readability classification models and reveal key code
-characteristics that drive their assessments, we develop a GNN explainer-based interpretability framework to
-analyze decision patterns in GNN-based classification models’ readability predictions. **Method:** First, 
-we propose a simplified Abstract Syntax Tree (AST)-based code representation method, which transforms Java
-code snippets into ASTs and discards lower-level nodes with limited information. Then, we retrain the state-
-of-the-art GNN-based model together with our simplified program graphs. Finally, we employ SubgraphX to
+**Objective:** To improve the interpretability of existing code readability classification models and identify key
+code characteristics that drive their readability predictions, we propose an explanation framework with GNN
+explainers towards transparent and trustworthy code readability classification. **Method:** First, we propose
+a simplified Abstract Syntax Tree (AST)-based code representation method, which transforms Java code
+snippets into ASTs and discards lower-level nodes with limited information. Then, we retrain the state-of-
+the-art GNN-based model together with our simplified program graphs. Finally, we employ SubgraphX to
 explain the model’s code readability predictions at the subgraph-level and visualize the explanation results to
 further analyze what causes such predictions. **Result:** The experimental results show that sequential logic,
 code comments, selection logic, and nested structure are the most influential code characteristics when
